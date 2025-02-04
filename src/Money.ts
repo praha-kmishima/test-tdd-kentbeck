@@ -13,7 +13,8 @@ export class Dollar {
     return this.amount;
   }
 
-  equals(other: Dollar): boolean {
+  equals(other: any): boolean {
+    if (!(other instanceof Dollar)) return false;
     return this.amount === other.amount;
   }
 }

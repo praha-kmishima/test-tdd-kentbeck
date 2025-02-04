@@ -12,5 +12,7 @@ describe('Money', () => {
 
   it('equality', () => {
     expect(new Dollar(5).equals(new Dollar(5))).toBe(true)
+    expect(new Dollar(5).equals(null)).toBe(false)
+    expect(new Dollar(5).equals({})).toBe(false)
   })
 })
