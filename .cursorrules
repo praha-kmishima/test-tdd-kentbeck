@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "テスト駆動開発実践",
-    "description": "ケントベックのTDD本の第2章の実装：値オブジェクトの実装",
+    "description": "ケントベックのTDD本の各章の実装",
     "methodology": "TDD",
     "conventions": {
       "commitMessages": {
