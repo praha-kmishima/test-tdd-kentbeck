@@ -1,32 +1,30 @@
 import { describe, it, expect } from 'vitest'
-import { Dollar } from '../src/Money'
-import { Franc } from '../src/Money'
 import { Money } from '../src/Money'
 
 describe('Money', () => {
   it('multiplication', () => {
-    const five = new Dollar(5)
-    expect(five.times(2)).toEqual(new Dollar(10))
-    expect(five.times(3)).toEqual(new Dollar(15))
+    const five = Money.dollar(5)
+    expect(five.times(2)).toEqual(Money.dollar(10))
+    expect(five.times(3)).toEqual(Money.dollar(15))
   })
 
   it('equality', () => {
-    expect(new Dollar(5).equals(new Dollar(5))).toBe(true)
-    expect(new Dollar(5).equals(null)).toBe(false)
-    expect(new Dollar(5).equals({})).toBe(false)
-    expect(new Franc(5).equals(new Franc(5))).toBe(true)
-    expect(new Franc(5).equals(new Dollar(5))).toBe(false)
+    expect(Money.dollar(5).equals(Money.dollar(5))).toBe(true)
+    expect(Money.dollar(5).equals(null)).toBe(false)
+    expect(Money.dollar(5).equals({})).toBe(false)
+    expect(Money.franc(5).equals(Money.franc(5))).toBe(true)
+    expect(Money.franc(5).equals(Money.dollar(5))).toBe(false)
   })
 
   it('franc multiplication', () => {
-    const five = new Franc(5)
-    expect(five.times(2)).toEqual(new Franc(10))
-    expect(five.times(3)).toEqual(new Franc(15))
+    const five = Money.franc(5)
+    expect(five.times(2)).toEqual(Money.franc(10))
+    expect(five.times(3)).toEqual(Money.franc(15))
   })
 
   it('currency', () => {
-    expect(new Dollar(1).currency()).toBe("USD")
-    expect(new Franc(1).currency()).toBe("CHF")
+    expect(Money.dollar(1).currency()).toBe("USD")
+    expect(Money.franc(1).currency()).toBe("CHF")
   })
 
   it('different class equality', () => {
