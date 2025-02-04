@@ -102,4 +102,13 @@ describe('Money', () => {
     const reduced = bank.reduce(sum, "USD")
     expect(reduced).toEqual(Money.dollar(2))
   })
+
+  it('expression times', () => {
+    const fiveBucks: Expression = Money.dollar(5)
+    const tenBucks: Expression = Money.dollar(10)
+    const bank = new Bank()
+    const sum: Expression = new Sum(fiveBucks, tenBucks).times(2)
+    const result = bank.reduce(sum, "USD")
+    expect(result).toEqual(Money.dollar(30))
+  })
 })
