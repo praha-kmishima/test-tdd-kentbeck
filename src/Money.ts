@@ -33,12 +33,22 @@ export class Money implements Expression {
   }
 
   plus(addend: Money): Expression {
-    return new Money(this.amount + addend.amount, this._currency);
+    return new Sum(this, addend);
   }
 }
 
 export class Bank {
   reduce(source: Expression, to: string): Money {
     return Money.dollar(10)  // とりあえずハードコード
+  }
+}
+
+export class Sum implements Expression {
+  augend: Money;
+  addend: Money;
+
+  constructor(augend: Money, addend: Money) {
+    this.augend = augend;
+    this.addend = addend;
   }
 }

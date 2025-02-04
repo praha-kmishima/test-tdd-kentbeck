@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { Money } from '../src/Money'
 import { Expression } from '../src/Money'
 import { Bank } from '../src/Money'
-
+import { Sum } from '../src/Money'
 
 describe('Money', () => {
   it('multiplication', () => {
@@ -42,5 +42,13 @@ describe('Money', () => {
     const bank = new Bank()
     const reduced = bank.reduce(result, "USD")
     expect(reduced).toEqual(Money.dollar(10))
+  })
+
+  it('plus returns sum', () => {
+    const five = Money.dollar(5)
+    const result = five.plus(Money.dollar(5))
+    const sum = result as Sum
+    expect(sum.augend).toEqual(five)
+    expect(sum.addend).toEqual(Money.dollar(5))
   })
 })
