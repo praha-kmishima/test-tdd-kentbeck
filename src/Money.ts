@@ -12,4 +12,8 @@ export class Dollar {
   getAmount(): number {
     return this.amount;
   }
+
+  equals(other: Dollar): boolean {
+    return this.amount === other.amount;
+  }
 }

@@ -9,4 +9,8 @@ describe('Money', () => {
     product = five.times(3)
     expect(product.getAmount()).toBe(15)
   })
+
+  it('equality', () => {
+    expect(new Dollar(5).equals(new Dollar(5))).toBe(true)
+  })
 })
