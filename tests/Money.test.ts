@@ -58,4 +58,10 @@ describe('Money', () => {
     const result = bank.reduce(sum, "USD")
     expect(result).toEqual(Money.dollar(7))
   })
+
+  it('reduce money', () => {
+    const bank = new Bank()
+    const result = bank.reduce(Money.dollar(1), "USD")
+    expect(result).toEqual(Money.dollar(1))
+  })
 })
