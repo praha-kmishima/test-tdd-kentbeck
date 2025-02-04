@@ -5,6 +5,8 @@ export abstract class Money {
     this.amount = amount;
   }
 
+  abstract times(multiplier: number): Money;
+
   equals(other: any): boolean {
     if (!(other instanceof Money)) return false;
     return this.amount === other.amount 
@@ -13,7 +15,7 @@ export abstract class Money {
 }
 
 export class Dollar extends Money {
-  times(multiplier: number): Dollar {
+  times(multiplier: number): Money {
     return new Dollar(this.amount * multiplier);
   }
 
@@ -23,7 +25,7 @@ export class Dollar extends Money {
 }
 
 export class Franc extends Money {
-  times(multiplier: number): Franc {
+  times(multiplier: number): Money {
     return new Franc(this.amount * multiplier);
   }
 
