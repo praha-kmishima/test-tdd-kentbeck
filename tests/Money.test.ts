@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { Dollar } from '../src/Money'
 import { Franc } from '../src/Money'
+import { Money } from '../src/Money'
 
 describe('Money', () => {
   it('multiplication', () => {
@@ -26,5 +27,10 @@ describe('Money', () => {
   it('currency', () => {
     expect(new Dollar(1).currency()).toBe("USD")
     expect(new Franc(1).currency()).toBe("CHF")
+  })
+
+  it('different class equality', () => {
+    expect(Money.dollar(5).equals(Money.dollar(5))).toBe(true)
+    expect(Money.franc(5).equals(Money.franc(5))).toBe(true)
   })
 })
