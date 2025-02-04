@@ -28,4 +28,8 @@ export class Money {
     return this.amount === other.amount 
       && this.currency() === other.currency();
   }
+
+  plus(addend: Money): Money {
+    return new Money(this.amount + addend.amount, this._currency);
+  }
 }

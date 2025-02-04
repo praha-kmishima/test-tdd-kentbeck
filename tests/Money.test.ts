@@ -32,4 +32,9 @@ describe('Money', () => {
     expect(Money.franc(5).equals(Money.franc(5))).toBe(true)
     expect(Money.franc(10).equals(Money.franc(10))).toBe(true)
   })
+
+  it('simple addition', () => {
+    const sum = Money.dollar(5).plus(Money.dollar(5))
+    expect(sum).toEqual(Money.dollar(10))
+  })
 })
