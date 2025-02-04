@@ -95,4 +95,11 @@ describe('Money', () => {
     const result = bank.reduce(sum, "USD")
     expect(result).toEqual(Money.dollar(20))
   })
+
+  it('plus same currency', () => {
+    const sum: Expression = Money.dollar(1).plus(Money.dollar(1))
+    const bank = new Bank()
+    const reduced = bank.reduce(sum, "USD")
+    expect(reduced).toEqual(Money.dollar(2))
+  })
 })
