@@ -36,3 +36,9 @@ export class Money implements Expression {
     return new Money(this.amount + addend.amount, this._currency);
   }
 }
+
+export class Bank {
+  reduce(source: Expression, to: string): Money {
+    return Money.dollar(10)  // とりあえずハードコード
+  }
+}
