@@ -48,17 +48,34 @@ export class Money implements Expression {
   }
 }
 
+class Pair {
+  constructor(
+    private readonly from: string,
+    private readonly to: string
+  ) {}
+
+  equals(object: any): boolean {
+    const pair = object as Pair;
+    return this.from === pair.from && this.to === pair.to;
+  }
+
+  hashCode(): string {
+    return `${this.from}->${this.to}`;
+  }
+}
+
 export class Bank {
   private rates: Map<string, number> = new Map();
 
   addRate(from: string, to: string, rate: number): void {
-    this.rates.set(from + "->" + to, rate);
+    const pair = new Pair(from, to);
+    this.rates.set(pair.hashCode(), rate);
   }
 
   rate(from: string, to: string): number {
     if (from === to) return 1;
-    const rate = this.rates.get(from + "->" + to);
-    return rate ?? 1;
+    const pair = new Pair(from, to);
+    return this.rates.get(pair.hashCode()) ?? 1;
   }
 
   reduce(source: Expression, to: string): Money {
