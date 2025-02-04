@@ -15,7 +15,11 @@ export abstract class Money {
     return new Franc(amount);
   }
 
-  abstract times(multiplier: number): Money;
+  times(multiplier: number): Money {
+    return this._currency === "USD" 
+      ? new Dollar(this.amount * multiplier)
+      : new Franc(this.amount * multiplier);
+  }
 
   currency(): string {
     return this._currency;
@@ -32,26 +36,10 @@ export class Dollar extends Money {
   constructor(amount: number) {
     super(amount, "USD");
   }
-
-  times(multiplier: number): Money {
-    return new Dollar(this.amount * multiplier);
-  }
-
-  getAmount(): number {
-    return this.amount;
-  }
 }
 
 export class Franc extends Money {
   constructor(amount: number) {
     super(amount, "CHF");
-  }
-
-  times(multiplier: number): Money {
-    return new Franc(this.amount * multiplier);
-  }
-
-  getAmount(): number {
-    return this.amount;
   }
 }
