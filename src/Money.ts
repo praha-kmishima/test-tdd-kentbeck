@@ -1,4 +1,7 @@
-export class Money {
+export interface Expression {
+}
+
+export class Money implements Expression {
   protected amount: number;
   protected _currency: string;
 
@@ -29,7 +32,7 @@ export class Money {
       && this.currency() === other.currency();
   }
 
-  plus(addend: Money): Money {
+  plus(addend: Money): Expression {
     return new Money(this.amount + addend.amount, this._currency);
   }
 }

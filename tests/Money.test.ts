@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { Money } from '../src/Money'
+import { Expression } from '../src/Money'
 
 describe('Money', () => {
   it('multiplication', () => {
@@ -34,7 +35,9 @@ describe('Money', () => {
   })
 
   it('simple addition', () => {
-    const sum = Money.dollar(5).plus(Money.dollar(5))
+    const five = Money.dollar(5)
+    const result: Expression = five.plus(Money.dollar(5))
+    const sum = result as Money  // 一時的な型キャスト
     expect(sum).toEqual(Money.dollar(10))
   })
 })
