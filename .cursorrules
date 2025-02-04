@@ -1,0 +1,86 @@
+{
+  "project": {
+    "name": "テスト駆動開発実践",
+    "description": "ケントベックのTDD本の第2章の実装：値オブジェクトの実装",
+    "methodology": "TDD",
+    "conventions": {
+      "commitMessages": {
+        "test": "test: ${description}",
+        "feat": "feat: ${description}",
+        "refactor": "refactor: ${description}"
+      }
+    }
+  },
+  "tdd": {
+    "cycles": {
+      "red": {
+        "description": "失敗するテストを書く",
+        "rules": [
+          "テストは必ず失敗する状態で開始すること",
+          "最小限のテストケースから開始すること",
+          "テストの意図を明確にコメントで記述すること",
+          "期待される失敗を明確にすること"
+        ]
+      },
+      "green": {
+        "description": "テストを通す最小限の実装",
+        "rules": [
+          "最も単純な実装から開始すること",
+          "一度に1つのテストのみ対応すること",
+          "実装の意図をコメントで説明すること",
+          "完璧な実装を目指さないこと"
+        ]
+      },
+      "refactor": {
+        "description": "コードの改善",
+        "rules": [
+          "テストが通る状態を維持すること",
+          "1つずつ改善を適用すること",
+          "改善の理由をコメントで説明すること",
+          "各改善後にテストを実行すること"
+        ]
+      }
+    }
+  },
+  "documentation": {
+    "rules": [
+      "各サイクルの開始時にnote.mdに計画を記録すること",
+      "各サイクルの終了時に学びを記録すること",
+      "コミットメッセージは規定の形式に従うこと"
+    ],
+    "templates": {
+      "cycleStart": {
+        "format": [
+          "### 第${cycleNumber}回サイクル：${purpose}",
+          "",
+          "#### 現状の課題",
+          "- ${issues}",
+          "",
+          "#### 変更目的",
+          "- ${objectives}",
+          "",
+          "#### 期待される結果",
+          "- ${expectedResults}"
+        ]
+      },
+      "cycleEnd": {
+        "format": [
+          "#### 学びと気づき",
+          "- ${learnings}",
+          "",
+          "#### 次のサイクルでの課題",
+          "- ${nextChallenges}"
+        ]
+      }
+    }
+  },
+  "codeStyle": {
+    "typescript": {
+      "rules": [
+        "クラスのプロパティは可能な限りprivateにすること",
+        "メソッドの戻り値の型は明示的に指定すること",
+        "不変性を重視した実装を心がけること"
+      ]
+    }
+  }
+}
