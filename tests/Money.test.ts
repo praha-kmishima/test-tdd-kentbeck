@@ -30,5 +30,6 @@ describe('Money', () => {
   it('different class equality', () => {
     expect(Money.dollar(5).equals(Money.dollar(5))).toBe(true)
     expect(Money.franc(5).equals(Money.franc(5))).toBe(true)
+    expect(Money.franc(10).equals(Money.franc(10))).toBe(true)
   })
 })

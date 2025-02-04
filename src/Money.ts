@@ -28,7 +28,7 @@ export abstract class Money {
   equals(other: any): boolean {
     if (!(other instanceof Money)) return false;
     return this.amount === other.amount 
-      && this.constructor.name === other.constructor.name;
+      && this.currency() === other.currency();
   }
 }
 
