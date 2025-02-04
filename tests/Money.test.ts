@@ -71,4 +71,8 @@ describe('Money', () => {
     const result = bank.reduce(Money.franc(2), "USD")
     expect(result).toEqual(Money.dollar(1))
   })
+
+  it('identity rate', () => {
+    expect(new Bank().rate("USD", "USD")).toBe(1)
+  })
 })
