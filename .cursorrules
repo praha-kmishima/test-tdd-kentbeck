@@ -44,35 +44,8 @@
   },
   "documentation": {
     "rules": [
-      "各サイクルの開始時にnote.mdに計画を記録すること",
-      "各サイクルの終了時に学びを記録すること",
-      "コミットメッセージは規定の形式に従うこと"
+      "各サイクルの開始時にnote.mdにチェックリストを更新すること",
     ],
-    "templates": {
-      "cycleStart": {
-        "format": [
-          "### 第${cycleNumber}回サイクル：${purpose}",
-          "",
-          "#### 現状の課題",
-          "- ${issues}",
-          "",
-          "#### 変更目的",
-          "- ${objectives}",
-          "",
-          "#### 期待される結果",
-          "- ${expectedResults}"
-        ]
-      },
-      "cycleEnd": {
-        "format": [
-          "#### 学びと気づき",
-          "- ${learnings}",
-          "",
-          "#### 次のサイクルでの課題",
-          "- ${nextChallenges}"
-        ]
-      }
-    }
   },
   "codeStyle": {
     "typescript": {

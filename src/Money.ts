@@ -18,3 +18,24 @@ export class Dollar {
     return this.amount === other.amount;
   }
 }
+
+export class Franc {
+  private amount: number;
+
+  constructor(amount: number) {
+    this.amount = amount;
+  }
+
+  times(multiplier: number): Franc {
+    return new Franc(this.amount * multiplier);
+  }
+
+  equals(other: any): boolean {
+    if (!(other instanceof Franc)) return false;
+    return this.amount === other.amount;
+  }
+
+  getAmount(): number {
+    return this.amount;
+  }
+}
