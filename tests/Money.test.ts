@@ -22,4 +22,9 @@ describe('Money', () => {
     expect(five.times(2)).toEqual(new Franc(10))
     expect(five.times(3)).toEqual(new Franc(15))
   })
+
+  it('currency', () => {
+    expect(new Dollar(1).currency()).toBe("USD")
+    expect(new Franc(1).currency()).toBe("CHF")
+  })
 })
