@@ -21,7 +21,7 @@ export class Money implements Expression {
     return new Money(amount, "CHF");
   }
 
-  times(multiplier: number): Money {
+  times(multiplier: number): Expression {
     return new Money(this.amount * multiplier, this._currency);
   }
 
