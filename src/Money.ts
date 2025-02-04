@@ -1,6 +1,7 @@
 export interface Expression {
   reduce(bank: Bank, to: string): Money;
   plus(addend: Expression): Expression;
+  times(multiplier: number): Expression;
 }
 
 export class Money implements Expression {
@@ -100,5 +101,12 @@ export class Sum implements Expression {
 
   plus(addend: Expression): Expression {
     return new Sum(this, addend);
+  }
+
+  times(multiplier: number): Expression {
+    return new Sum(
+      this.augend.times(multiplier),
+      this.addend.times(multiplier)
+    );
   }
 }
