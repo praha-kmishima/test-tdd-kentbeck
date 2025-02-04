@@ -1,10 +1,17 @@
-export class Dollar {
-  private amount: number;
+export abstract class Money {
+  protected amount: number;
 
   constructor(amount: number) {
     this.amount = amount;
   }
 
+  equals(other: any): boolean {
+    if (!(other instanceof Money)) return false;
+    return this.amount === other.amount;
+  }
+}
+
+export class Dollar extends Money {
   times(multiplier: number): Dollar {
     return new Dollar(this.amount * multiplier);
   }
@@ -12,27 +19,11 @@ export class Dollar {
   getAmount(): number {
     return this.amount;
   }
-
-  equals(other: any): boolean {
-    if (!(other instanceof Dollar)) return false;
-    return this.amount === other.amount;
-  }
 }
 
-export class Franc {
-  private amount: number;
-
-  constructor(amount: number) {
-    this.amount = amount;
-  }
-
+export class Franc extends Money {
   times(multiplier: number): Franc {
     return new Franc(this.amount * multiplier);
-  }
-
-  equals(other: any): boolean {
-    if (!(other instanceof Franc)) return false;
-    return this.amount === other.amount;
   }
 
   getAmount(): number {
