@@ -1,4 +1,5 @@
 export interface Expression {
+  reduce(bank: Bank, to: string): Money;
 }
 
 export class Money implements Expression {
@@ -35,11 +36,19 @@ export class Money implements Expression {
   plus(addend: Money): Expression {
     return new Sum(this, addend);
   }
+
+  reduce(bank: Bank, to: string): Money {
+    return this;
+  }
+
+  getAmount(): number {
+    return this.amount;
+  }
 }
 
 export class Bank {
   reduce(source: Expression, to: string): Money {
-    return Money.dollar(10)  // とりあえずハードコード
+    return source.reduce(this, to);
   }
 }
 
@@ -50,5 +59,10 @@ export class Sum implements Expression {
   constructor(augend: Money, addend: Money) {
     this.augend = augend;
     this.addend = addend;
+  }
+
+  reduce(bank: Bank, to: string): Money {
+    const amount = this.augend.getAmount() + this.addend.getAmount();
+    return new Money(amount, to);
   }
 }

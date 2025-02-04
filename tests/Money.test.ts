@@ -51,4 +51,11 @@ describe('Money', () => {
     expect(sum.augend).toEqual(five)
     expect(sum.addend).toEqual(Money.dollar(5))
   })
+
+  it('reduce sum', () => {
+    const sum = new Sum(Money.dollar(3), Money.dollar(4))
+    const bank = new Bank()
+    const result = bank.reduce(sum, "USD")
+    expect(result).toEqual(Money.dollar(7))
+  })
 })
